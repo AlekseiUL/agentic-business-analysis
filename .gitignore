@@ -1,0 +1,15 @@
+# OS
+.DS_Store
+
+# Local/private notes
+.env
+*.local.md
+.private/
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# Local release/upload archives
+*.zip
