@@ -5,6 +5,17 @@
 
 A practical methodology for turning messy business operations into safe, measurable AI-agent automation pilots.
 
+## Canonical source
+
+This project is maintained by Aleksei Ulianov / Sprut_AI.
+Original repository: https://github.com/AlekseiUL/agentic-business-analysis
+
+If you found this project mirrored, repackaged, or redistributed elsewhere, check this repository as the source of truth.
+
+## Attribution
+
+Where permitted by the applicable license, if you reuse, fork, modify, package, or publish this work, keep the original copyright and license notice and link back to the canonical repository.
+
 **Tagline:** map the business first, then design the agents.
 
 Most AI automation projects fail because they start with a bot idea instead of an operating map. Agentic Business Analysis is a lightweight consulting toolkit for discovering where AI agents can actually help: intake, qualification, CRM hygiene, support triage, reporting, document drafting, knowledge-base operations, and controlled multi-agent workflows.
