@@ -22,6 +22,18 @@ Most AI automation projects fail because they start with a bot idea instead of a
 
 ---
 
+## Operating flow
+
+```mermaid
+flowchart LR
+    A[Client intake] --> B[Process map]
+    B --> C[Automation scoring]
+    C --> D[Agent job cards]
+    D --> E[Risk and approval gates]
+    E --> F[2-4 week pilot scope]
+    F --> G[Client-ready roadmap]
+```
+
 ## What this is
 
 This repository packages a repeatable method for:
