@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - name: Check local Markdown links
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          missing = []
+          for md in Path('.').rglob('*.md'):
+              if '.git' in md.parts:
+                  continue
+              for raw in re.findall(r'\[[^\]]+\]\(([^)]+)\)', md.read_text(encoding='utf-8')):
+                  target = raw.split('#', 1)[0].strip()
+                  if not target or target.startswith(('http://', 'https://', 'mailto:', 'tel:')):
+                      continue
+                  if target.startswith('<') and target.endswith('>'):
+                      target = target[1:-1]
+                  if not (md.parent / target).resolve().exists():
+                      missing.append(f'{md}: {raw}')
+          if missing:
+              raise SystemExit('\n'.join(missing))
+          print('Markdown links ok')
+          PY
+      - name: Check portable skill copies
+        shell: bash
+        run: |
+          cmp SKILL.md agentic-business-analysis/SKILL.md
+          for source in templates/*.md; do
+            name="$(basename "$source")"
+            cmp "$source" "agentic-business-analysis/templates/$name"
+          done
